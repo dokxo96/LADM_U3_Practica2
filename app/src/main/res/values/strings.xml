@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LADM_U3_Practica2</string>
+    <array name="clavesBusqueda">
+        <item>Nombre</item>
+        <item>Celular</item>
+    </array>
 </resources>

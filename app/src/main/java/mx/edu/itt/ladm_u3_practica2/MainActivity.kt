@@ -18,9 +18,7 @@ class MainActivity : AppCompatActivity() {
         confirmar.setOnClickListener {
             InsertarPedido()
         }
-        buscar.setOnClickListener {
-            cargarOtroActivity("er")
-        }
+
         cargarpedidos()
     }
 
@@ -66,29 +64,28 @@ class MainActivity : AppCompatActivity() {
             }
     }
     private fun cargarOtroActivity(i:String) {
-        var id=""
-        var nom=""
-        var dom=""
-        var cel=""
-        var cant=""
-        var prec=""
-        var desc=""
-        var entr=""
 
         val docRef = baseremota.collection("restaurante").document(i)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    id=i
-                    nom=document.data?.get("nombre").toString()
-                    dom=document.data?.get("domicilio").toString()
-                    cel=document.data?.get("celular").toString()
-                    cant=document.data?.get("cantidad").toString()
-                    prec=document.data?.get("precio").toString()
-                    desc=document.data?.get("descripcion").toString()
-                    entr=document.data?.get("entregado").toString()
 
-                    msj("DocumentSnapshot data: ${document.data?.get("nombre")}")
+
+
+                    msj("DocumentSnapshot data: ${document.get("pedido.entregado")}")
+                    var intento = Intent(this,Main2Activity::class.java)
+
+                    intento.putExtra("id",i)
+                    intento.putExtra("nombre",document.data?.get("nombre").toString())
+                    intento.putExtra("domicilio",document.data?.get("domicilio").toString())
+                    intento.putExtra("celular",document.data?.get("celular").toString())
+
+                    intento.putExtra("descripcion",document.get("pedido.descripcion").toString())
+                    intento.putExtra("cantidad",document.get("pedido.cantidad").toString())
+                    intento.putExtra("precio",document.get("pedido.precio").toString())
+                    intento.putExtra("entregado",document.get("pedido.entregado").toString())
+
+                    startActivityForResult(intento,0)
                 } else {
                     msj( "No such document")
                 }
@@ -97,25 +94,12 @@ class MainActivity : AppCompatActivity() {
                msj("get failed with ")
             }
 
-        var intento = Intent(this,Main2Activity::class.java)
 
-        intento.putExtra("id",id)
-        intento.putExtra("nombre",nom)
-        intento.putExtra("domicilio",dom)
-        intento.putExtra("celular",cel)
-        intento.putExtra("descripcion",desc)
-        intento.putExtra("cantidad",cant)
-        intento.putExtra("precio",prec)
-        intento.putExtra("entregado",entr)
-
-        startActivityForResult(intento,0)
 
 
     }
 
-    private fun consultaCelular(valor: Int) {
 
-    }
 
     private fun InsertarPedido() {
         var entr ="False"

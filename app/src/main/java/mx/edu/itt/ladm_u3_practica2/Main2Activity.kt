@@ -34,7 +34,7 @@ class Main2Activity : AppCompatActivity() {
 
                     var entr ="False"
                     if(entregadoM.isChecked==true){entr="True"}
-                   
+
                     var data  =  hashMapOf<String, Any>(
                         "nombre" to nombreM.text.toString(),
                         "domicilio" to domicilioM.text.toString(),

@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                    msj("DocumentSnapshot data: ${document.get("pedido.entregado")}")
+
                     var intento = Intent(this,Main2Activity::class.java)
 
                     intento.putExtra("id",i)

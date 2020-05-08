@@ -8,21 +8,9 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <ImageButton
-            android:id="@+id/buscar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icons824"
-            android:layout_gravity="right"
-            android:layout_marginLeft="310dp"
-            />
-
-    </LinearLayout>
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,21 +94,20 @@ android:orientation="vertical"
             android:id="@+id/confirmar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Confirmar pedido" />
-        <ScrollView
+
+        <ListView
+            android:id="@+id/ListaP"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-        >
-            <ListView
-                android:id="@+id/ListaP"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-        </ScrollView>
+            android:layout_height="242dp" />
+
 
 
 
     </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
